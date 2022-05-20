@@ -15,3 +15,13 @@ button{
     width: 400px;
     border: 2px solid gray;
 }
+
+#problemDisplay{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#solutionDisplay{
+    margin-top: 15px;
+    font-size: 30px;
+}
