@@ -14,6 +14,10 @@ function divide(numberOne, numberTwo){
     return (numberOne/numberTwo);
 }
 
+function remainder(numberOne, numberTwo){
+    return (numberOne % numberTwo);
+}
+
 function operate(operator, numberOne, numberTwo){
     let solution = 0;
     switch (operator){
@@ -28,6 +32,9 @@ function operate(operator, numberOne, numberTwo){
             break;
         case divide:
             solution = divide(numberOne, numberTwo);
+            break;
+        case remainder:
+            solution = remainder(numberOne, numberTwo);
             break;
     }
     return solution;
