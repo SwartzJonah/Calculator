@@ -20,106 +20,181 @@ const othreeButton = document.querySelector('#threeButton');
 const addButton = document.querySelector('#addButton');
 const zeroButton = document.querySelector('#zeroButton');
 const decimalButton = document.querySelector('#decimalButton');
-const negativeButton = document.querySelector('#negativeButton');
 const equalsButton = document.querySelector('#equalsButton');
 
 //Button Listeners
 allClear.addEventListener('click', () => {
-    let numherHolder = [];
-    let total = ' ';
-    let numberOne = ' ';
-    let numberTwo = ' ';
-    let operatorDisplay = ` `;
-    let operator = ``;
+    total = ' ';
+    numberOne = ' ';
+    numberTwo = ' ';
+    operatorDisplay = ' ';
+    operator = ' ';
+    start();
     problemDisplay.textContent = `${numberOne} ${operatorDisplay} ${numberTwo}`;
     solutionDisplay.textContent = `${total}`;
 })
 justClear.addEventListener('click', () => {
-    let total = '';
-    let numberOne = '';
-    let numberTwo = '';
-    let operatorDisplay = '';
-    let operator ='';
+    total = ' ';
+    numberOne = ' ';
+    numberTwo = ' ';
+    operatorDisplay = ' ';
+    operator =' ';
+    start();
     problemDisplay.textContent = `${numberOne} ${operatorDisplay} ${numberTwo}`;
     solutionDisplay.textContent = `${total}`;
 })
 remainderButton.addEventListener('click', () => {
-    operator = remainder;
-    operatorDisplay = '%';
+    if (operator === ' ' && numberOne != ' '){
+        operator = remainder;
+        operatorDisplay = '%';
+        start();
+    }
 })
 divideButton.addEventListener('click', () => {
-    operator = divide;
-    operatorDisplay = '/';
+    if (operator === ' ' && numberOne != ' '){
+        operator = divide;
+        operatorDisplay = '/';
+        start();
+    }
 })
 sevenButton.addEventListener('click', () => {
-    if (numberOne = ''){
-        numberOne = 7;
-    } else if (numberTwo = ''){
-        numberTwo = 7;
+    start();
+    if (operator === ' '){
+        numberOne += 7;
+    } else if ((operator != ' ')){
+        numberTwo += 7;
     } 
     start();
 })
 eightButton.addEventListener('click', () => {
-    if (numberOne = ''){
-        numberOne = 8;
-    } else if (numberTwo = ''){
-        numberTwo = 8;
-    }
+    start();
+    if (operator === ' '){
+        numberOne += 8;
+    } else if ((operator != ' ')){
+        numberTwo += 8;
+    } 
     start();
 })
 nineButton.addEventListener('click', () => {
-    colorState = 'color';
+    start();
+    if (operator === ' '){
+        numberOne += 9;
+    } else if ((operator != ' ')){
+        numberTwo += 9;
+    } 
+    start();
 })
 timesButton.addEventListener('click', () => {
-    colorState = 'color';
+    if (operator === ' ' && numberOne != ' '){
+        operator = multiply;
+        operatorDisplay = 'X';
+        start();
+    }
 })
 fourButton.addEventListener('click', () => {
-    colorState = 'color';
+    start();
+    if (operator === ' '){
+        numberOne += 4;
+    } else if ((operator != ' ')){
+        numberTwo += 4;
+    } 
+    start();
 })
 fiveButton.addEventListener('click', () => {
-    colorState = 'color';
+    start();
+    if (operator === ' '){
+        numberOne += 5;
+    } else if ((operator != ' ')){
+        numberTwo += 5;
+    } 
+    start();
 })
 sixButton.addEventListener('click', () => {
-    colorState = 'color';
+    start();
+    if (operator === ' '){
+        numberOne += 6;
+    } else if ((operator != ' ')){
+        numberTwo += 6;
+    } 
+    start();
 })
 minusButton.addEventListener('click', () => {
-    colorState = 'color';
+    if (operator === ' ' && numberOne != ' '){
+        operator = subtract;
+        operatorDisplay = '-';
+        start();
+    }
 })
 oneButton.addEventListener('click', () => {
-    colorState = 'color';
+    start();
+    if (operator === ' '){
+        numberOne += 1;
+    } else if ((operator != ' ')){
+        numberTwo += 1;
+    } 
+    start();
 })
+
 twoButton.addEventListener('click', () => {
-    colorState = 'color';
+    start();
+    if (operator === ' '){
+        numberOne += 2;
+    } else if ((operator != ' ')){
+        numberTwo += 2;
+    } 
+    start();
 })
-twoButton.addEventListener('click', () => {
-    colorState = 'color';
-})
+
 threeButton.addEventListener('click', () => {
-    colorState = 'color';
+    start();
+    if (operator === ' '){
+        numberOne += 3;
+    } else if ((operator != ' ')){
+        numberTwo += 3;
+    } 
+    start();
 })
+
 addButton.addEventListener('click', () => {
-    colorState = 'color';
+    if (operator === ' ' && numberOne != ' '){
+        operator = add;
+        operatorDisplay = '+';
+        start();
+    }
 })
 zeroButton.addEventListener('click', () => {
-    colorState = 'color';
+    start();
+    if (operator === ' '){
+        numberOne += 0;
+    } else if ((operator != ' ')){
+        numberTwo += 0;
+    } 
+    start();
 })
+
 decimalButton.addEventListener('click', () => {
     colorState = 'color';
 })
-negativeButton.addEventListener('click', () => {
-    colorState = 'color';
-})
+
+
+
 equalsButton.addEventListener('click', () => {
     total = operate(operator, numberOne,numberTwo);
+    start();
+    total = ' ';
+    numberOne = ' ';
+    numberTwo = ' ';
+    operatorDisplay = ' ';
+    operator = ' ';
 })
 
 
 //Starter State
-let total = '';
-let numberOne = '';
-let numberTwo = '';
-let operatorDisplay = '';
-let operator = '';
+let total = ' ';
+let numberOne = ' ';
+let numberTwo = ' ';
+let operatorDisplay = ' ';
+let operator = ' ';
 start();
 
 //Functions
@@ -156,7 +231,9 @@ function operate(operator, numberOne, numberTwo){
 
 //Math Functions
 function add(numberOne, numberTwo){
-    return (numberOne + numberTwo);
+    let a = parseInt(numberOne);
+    let b = parseInt(numberTwo);
+    return (a + b);
 }
 
 function subtract(numberOne, numberTwo){

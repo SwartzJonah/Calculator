@@ -3,6 +3,10 @@ button{
     width:100px;
 }
 
+#equalsButton{
+    width: 200px;
+}
+
 #calculator{
     display: flex;
     flex-direction: column;
