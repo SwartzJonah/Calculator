@@ -151,6 +151,7 @@ addButton.addEventListener('click', () => {
 equalsButton.addEventListener('click', () => {
     if (numberOne != ' ' && numberTwo != ' ' && operator != ' '){
         total = operate(operator, numberOne,numberTwo);
+        numberTwo += ' =';
         console.log (total);
         if (total === Infinity){
             total = "Don't Divide By 0 FOOL";

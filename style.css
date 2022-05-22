@@ -29,11 +29,39 @@ button{
     padding: 0px;
     border-radius: 2.5rem;
     border: 2px solid black;
+    box-shadow: 5px 10px 18px black;
+    
+}
+
+#allClear:hover{
+    background-color: red;
+}
+
+#justClear:hover{
+    background-color: red;
+}
+
+#equalsButton:hover{
+    background-color: green;
+}
+
+#remainderButton:hover, #addButton:hover{
+    background-color: rgb(0, 153, 255);
+}
+#divideButton:hover, #timesButton:hover,#minusButton:hover{
+    background-color: rgb(0, 153, 255);
+}
+
+button:hover{
+    background-color: yellow;
+}
+
+button:active{
+    transform: scale(.8);
 }
 
 #equalsButton{
-    width: 174px;
-    
+    width: 174px;  
 }
 
 #calculator{
@@ -56,7 +84,7 @@ button{
     flex-direction: column;
     align-items: flex-end;
     border-radius: 15px 15px 0px 0px;
-    background-color: rgba(0, 0, 0, 0.315);
+    background-color: rgba(0, 0, 0, 0.178);
     height:100px;
     width: 400px;
 }
@@ -64,14 +92,15 @@ button{
     background-color: rgba(0, 0, 0, 0.582);
 }
 #problemDisplay{
-    color: rgb(0, 255, 98);
+    color: yellow;
     padding-right: 10px;
     margin-top: 10px;
     font-size: 20px;
 }
 
 #solutionDisplay{
-    color: red;
+    font-weight: bolder;
+    color: rgb(0, 177, 0);
     padding-right: 10px;
     margin-top: 25px;
     font-size: 30px;
