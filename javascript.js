@@ -334,6 +334,9 @@ document.addEventListener('keydown', (event) => {
     if (event.key == 'x'){
         document.querySelector('#timesButton').click();
     }
+    if (event.key == '.'){
+        document.querySelector('#decimalButton').click();
+    }
     if (event.key == '='){
         document.querySelector('#equalsButton').click();
     }
