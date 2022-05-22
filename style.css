@@ -1,34 +1,128 @@
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    margin-bottom: 0;
+    background-color: rgb(1, 143, 143);
+}
+
+h1{
+    
+    margin: 15px;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+hr{
+    border: 5px solid black;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 button{
-    height: 100px;
-    width:100px;
+    font-size: 20px;
+    background-color: gray;
+    height: 80px;
+    width:80px;
+    gap: 0px;
+    padding: 0px;
+    border-radius: 2.5rem;
+    border: 2px solid black;
 }
 
 #equalsButton{
-    width: 200px;
+    width: 174px;
+    
 }
 
 #calculator{
     display: flex;
+    align-self: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 200px;
+    margin-top: 100px;
     text-align: center;
+    background-color: gray;
+    border: 8px solid black;
+    border-radius: 25px;
+    height: auto;
+    width: 400px;
 }
 
 #display{
-    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-radius: 15px 15px 0px 0px;
+    background-color: rgba(0, 0, 0, 0.315);
     height:100px;
     width: 400px;
-    border: 2px solid gray;
 }
-
+#calcButtons{
+    background-color: rgba(0, 0, 0, 0.582);
+}
 #problemDisplay{
+    color: rgb(0, 255, 98);
+    padding-right: 10px;
     margin-top: 10px;
     font-size: 20px;
 }
 
 #solutionDisplay{
-    margin-top: 15px;
+    color: red;
+    padding-right: 10px;
+    margin-top: 25px;
     font-size: 30px;
+}
+
+#insideCalc{
+    margin: 0px;
+    border: 2px solid black;
+    width: 400px;
+}
+#rowOne{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    height: 100px;
+}
+#rowTwo{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    height: 100px;
+}
+#rowThree{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    height: 100px;
+}
+#rowFour{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    height: 100px;
+}
+
+#rowFive{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    height: 100px;
+}
+
+footer{
+    font-weight: bold;
+    
+   padding-top: 60px;
+    color: gray;
+    padding-bottom: 0px;
+    margin: 0px;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
 }
