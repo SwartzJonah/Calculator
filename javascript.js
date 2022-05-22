@@ -22,8 +22,11 @@ const zeroButton = document.querySelector('#zeroButton');
 const decimalButton = document.querySelector('#decimalButton');
 const equalsButton = document.querySelector('#equalsButton');
 
-//Button Listeners
+//Button Listeners 
+
+//function buttons
 allClear.addEventListener('click', () => {
+    tempTotal = ' ';
     total = ' ';
     numberOne = ' ';
     numberTwo = ' ';
@@ -33,7 +36,9 @@ allClear.addEventListener('click', () => {
     problemDisplay.textContent = `${numberOne} ${operatorDisplay} ${numberTwo}`;
     solutionDisplay.textContent = `${total}`;
 })
+
 justClear.addEventListener('click', () => {
+    tempTotal = ' ';
     total = ' ';
     numberOne = ' ';
     numberTwo = ' ';
@@ -43,20 +48,133 @@ justClear.addEventListener('click', () => {
     problemDisplay.textContent = `${numberOne} ${operatorDisplay} ${numberTwo}`;
     solutionDisplay.textContent = `${total}`;
 })
+
 remainderButton.addEventListener('click', () => {
-    if (operator === ' ' && numberOne != ' '){
+    if (operator === ' ' && numberOne != ' ' && tempTotal === ' '){
+        operator = remainder;
+        operatorDisplay = '%';
+        start();
+        // if there is a temp number and no number one add
+    } else if (tempTotal != ' ' && numberOne === ' ') {
+        numberOne = tempTotal;
+        operator = remainder;
+        operatorDisplay = '%';
+        start();
+        // if there is a temp and a number one use number one
+    } else if (operator === ' ' && numberOne != ' '){
         operator = remainder;
         operatorDisplay = '%';
         start();
     }
-})
+    
+});
+
 divideButton.addEventListener('click', () => {
-    if (operator === ' ' && numberOne != ' '){
+    if (operator === ' ' && numberOne != ' ' && tempTotal === ' '){
+        operator = divide;
+        operatorDisplay = '/';
+        start();
+        // if there is a temp number and no number one add
+    } else if (tempTotal != ' ' && numberOne === ' ') {
+        numberOne = tempTotal;
+        operator = divide;
+        operatorDisplay = '/';
+        start();
+        // if there is a temp and a number one use number one
+    } else if (operator === ' ' && numberOne != ' '){
         operator = divide;
         operatorDisplay = '/';
         start();
     }
-})
+    
+});
+
+timesButton.addEventListener('click', () => {
+    if (operator === ' ' && numberOne != ' ' && tempTotal === ' '){
+        operator = multiply;
+        operatorDisplay = 'X';
+        start();
+        // if there is a temp number and no number one add
+    } else if (tempTotal != ' ' && numberOne === ' ') {
+        numberOne = tempTotal;
+        operator = multiply;
+        operatorDisplay = 'X';
+        start();
+        // if there is a temp and a number one use number one
+    } else if (operator === ' ' && numberOne != ' '){
+        operator = multiply;
+        operatorDisplay = 'X';
+        start();
+    } 
+});
+
+minusButton.addEventListener('click', () => {
+    if (operator === ' ' && numberOne != ' ' && tempTotal === ' '){
+        operator = subtract;
+        operatorDisplay = '-';
+        start();
+        // if there is a temp number and no number one add
+    } else if (tempTotal != ' ' && numberOne === ' ') {
+        numberOne = tempTotal;
+        operator = subtract;
+        operatorDisplay = '-';
+        start();
+        // if there is a temp and a number one use number one
+    } else if (operator === ' ' && numberOne != ' '){
+        operator = subtract;
+        operatorDisplay = '-';
+        start();
+    }
+});
+
+addButton.addEventListener('click', () => {
+    //if there is a number one and no temp number add
+    if (operator === ' ' && numberOne != ' ' && tempTotal === ' '){
+        operator = add;
+        operatorDisplay = '+';
+        start();
+        // if there is a temp number and no number one add
+    } else if (tempTotal != ' ' && numberOne === ' ') {
+        numberOne = tempTotal;
+        operator = add;
+        operatorDisplay = '+';
+        start();
+        // if there is a temp and a number one use number one
+    } else if (operator === ' ' && numberOne != ' '){
+        operator = add;
+        operatorDisplay = '+';
+        start();
+    }
+    
+});
+
+equalsButton.addEventListener('click', () => {
+    if (numberOne != ' ' && numberTwo != ' ' && operator != ' '){
+        total = operate(operator, numberOne,numberTwo);
+        console.log (total);
+        if (total === Infinity){
+            total = "Don't Divide By 0 FOOL";
+            start();
+            tempTotal = ' ';
+            total = ' ';
+            numberOne = ' ';
+            numberTwo = ' ';
+            operatorDisplay = ' ';
+            operator = ' ';
+        } else {
+        start();
+        tempTotal = total;
+        total = ' ';
+        numberOne = ' ';
+        numberTwo = ' ';
+        operatorDisplay = ' ';
+        operator = ' ';
+    }
+    }
+});
+
+//Number Buttons
+
 sevenButton.addEventListener('click', () => {
     start();
     if (operator === ' '){
@@ -84,13 +202,7 @@ nineButton.addEventListener('click', () => {
     } 
     start();
 })
-timesButton.addEventListener('click', () => {
-    if (operator === ' ' && numberOne != ' '){
-        operator = multiply;
-        operatorDisplay = 'X';
-        start();
-    }
-})
+
 fourButton.addEventListener('click', () => {
     start();
     if (operator === ' '){
@@ -118,13 +230,7 @@ sixButton.addEventListener('click', () => {
     } 
     start();
 })
-minusButton.addEventListener('click', () => {
-    if (operator === ' ' && numberOne != ' '){
-        operator = subtract;
-        operatorDisplay = '-';
-        start();
-    }
-})
+
 oneButton.addEventListener('click', () => {
     start();
     if (operator === ' '){
@@ -155,13 +261,7 @@ threeButton.addEventListener('click', () => {
     start();
 })
 
-addButton.addEventListener('click', () => {
-    if (operator === ' ' && numberOne != ' '){
-        operator = add;
-        operatorDisplay = '+';
-        start();
-    }
-})
+
 zeroButton.addEventListener('click', () => {
     start();
     if (operator === ' '){
@@ -173,35 +273,94 @@ zeroButton.addEventListener('click', () => {
 })
 
 decimalButton.addEventListener('click', () => {
-    colorState = 'color';
-})
-
-
-
-equalsButton.addEventListener('click', () => {
-    total = operate(operator, numberOne,numberTwo);
     start();
-    total = ' ';
-    numberOne = ' ';
-    numberTwo = ' ';
-    operatorDisplay = ' ';
-    operator = ' ';
+    testOne = numberOne.includes('.');
+    testTwo = numberTwo.includes('.');
+    console.log(testOne);
+    if (operator === ' ' && !testOne){
+        numberOne += `.`;
+    } else if ((operator != ' ') && !testTwo){
+        numberTwo += `.`;
+    } 
+    start();
 })
+
+//key functionality
+
+document.addEventListener('keydown', (event) => {
+    console.log(event.key);
+    if (event.key == 0){
+        document.querySelector('#zeroButton').click();
+    }
+    if (event.key == 1){
+        document.querySelector('#oneButton').click();
+    }
+    if (event.key == 2){
+        document.querySelector('#twoButton').click();
+    }
+    if (event.key == 3){
+        document.querySelector('#threeButton').click();
+    }
+    if (event.key == 4){
+        document.querySelector('#fourButton').click();
+    }
+    if (event.key == 5){
+        document.querySelector('#fiveButton').click();
+    }
+    if (event.key == 6){
+        document.querySelector('#sixButton').click();
+    }
+    if (event.key == 7){
+        document.querySelector('#sevenButton').click();
+    }
+    if (event.key == 8){
+        document.querySelector('#eightButton').click();
+    }
+    if (event.key == 9){
+        document.querySelector('#nineButton').click();
+    }
+    if (event.key == '%'){
+        document.querySelector('#remainderButton').click();
+    }
+    if (event.key == '/'){
+        document.querySelector('#divideButton').click();
+    }
+    if (event.key == '+'){
+        document.querySelector('#addButton').click();
+    }
+    if (event.key == '-'){
+        document.querySelector('#minusButton').click();
+    }
+    if (event.key == 'x'){
+        document.querySelector('#timesButton').click();
+    }
+    if (event.key == '='){
+        document.querySelector('#equalsButton').click();
+    }
+    if (event.key == 'Enter'){
+        document.querySelector('#equalsButton').click();
+    }
+})
+
+
+
 
 
 //Starter State
+let testOne = false;
+let testTwo = false;
 let total = ' ';
 let numberOne = ' ';
 let numberTwo = ' ';
 let operatorDisplay = ' ';
 let operator = ' ';
+let tempTotal = ' ';
 start();
 
 //Functions
 function start(){
     problemDisplay.textContent = `${numberOne} ${operatorDisplay} ${numberTwo}`;
     solutionDisplay.textContent = `${total}`;
-    console.log(numberOne, operator, numberTwo);
 }
 
 
@@ -231,8 +390,8 @@ function operate(operator, numberOne, numberTwo){
 
 //Math Functions
 function add(numberOne, numberTwo){
-    let a = parseInt(numberOne);
-    let b = parseInt(numberTwo);
+    let a = parseFloat(numberOne);
+    let b = parseFloat(numberTwo);
     return (a + b);
 }
 
